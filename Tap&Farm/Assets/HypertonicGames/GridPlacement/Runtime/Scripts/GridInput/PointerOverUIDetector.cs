@@ -38,6 +38,7 @@ namespace Hypertonic.GridPlacement.GridInput
             eventData.position = inputPosition;
             List<RaycastResult> raysastResults = new List<RaycastResult>();
             EventSystem.current.RaycastAll(eventData, raysastResults);
+            print("yes");
             return raysastResults;
         }
     }

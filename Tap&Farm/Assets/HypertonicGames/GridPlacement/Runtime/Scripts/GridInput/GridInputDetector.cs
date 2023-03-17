@@ -30,10 +30,11 @@ namespace Hypertonic.GridPlacement.GridInput
                 Vector3? input = GetInputPosition();
 
                 if (!input.HasValue)
-                    return;
+                    return;   
 
                 if (PointerOverUIDetector.IsPointerOverUIElement(input.Value) && _gridSettings.PreventInputThroughUI)
                 {
+                    print("yes");
                     return;
                 }
 
