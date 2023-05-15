@@ -5,6 +5,7 @@ using TMPro;
 
 public class Inventory : MonoBehaviour
 {
+    public GameObject InventoryUI;
 
     public Dictionary<string, int> inventory = new Dictionary<string, int>();
 
@@ -22,7 +23,7 @@ public class Inventory : MonoBehaviour
         {
             string key = kvp.Key;
             int value = kvp.Value;
-            this.gameObject.transform.GetChild(count).gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = value.ToString();
+            InventoryUI.gameObject.transform.GetChild(count).gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = value.ToString();
             count+=1;
 
         }
