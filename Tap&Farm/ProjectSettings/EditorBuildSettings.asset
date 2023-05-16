@@ -6,12 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: d06cfd82effc7fb448a3f98a38c06e91
-  - enabled: 1
     path: Assets/PolygonFarm/Demo/Demo.unity
     guid: 28ac9a59020c6bc459f797acd217859a
-  - enabled: 1
-    path: Assets/Scenes/Market.unity
-    guid: 8fb1fbb47ab51394a983e01f56f2f934
   m_configObjects: {}
