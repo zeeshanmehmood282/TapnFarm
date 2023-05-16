@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class MobileCamera : MonoBehaviour
-{
-    public float dragSpeed = 50f;
-    public float cameraHeight = 15.57f;
-    public float scrollSpeed = 1f;
-    public Transform limitObject;
-    public float maxDistanceFromLimit = 10f;
+public class MobileCamera : MonoBehaviour {
+
+   public float dragSpeed = 50f;
+
+   [SerializeField] float cameraHeight = 15.57f;
 
     private Vector3 dragOrigin;
 
-    private void Update()
+    [SerializeField] float scrollspeed = 1f;
+
+    [SerializeField]
+    private LayerMask draggableLayer;
+
+    void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -25,28 +28,18 @@ public class MobileCamera : MonoBehaviour
 
         transform.Translate(move, Space.Self);
 
-        // Limit camera movement within a specific distance from the limitObject
-        if (limitObject != null)
-        {
-            Vector3 clampedPos = transform.position;
-            float distance = Vector3.Distance(limitObject.position, clampedPos);
-            float maxDistance = maxDistanceFromLimit;
+        // clamp camera position to prevent movement on the y-axis
 
-            if (distance > maxDistance)
-            {
-                Vector3 direction = (clampedPos - limitObject.position).normalized;
-                clampedPos = limitObject.position + direction * maxDistance;
-            }
-
-            transform.position = new Vector3(clampedPos.x, cameraHeight, clampedPos.z);
-        }
-
-        if (Input.mouseScrollDelta.y != 0)
+        if(Input.mouseScrollDelta.y != 0)
         {
             float scrollDelta = Input.mouseScrollDelta.y;
-            cameraHeight += scrollDelta * scrollSpeed;
+            cameraHeight += scrollDelta * scrollspeed;
         }
+
+        Vector3 clampedPos = transform.position;
+        clampedPos.y = cameraHeight;
+        transform.position = clampedPos;
 
         dragOrigin = Input.mousePosition;
     }
-}
+    }
